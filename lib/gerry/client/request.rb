@@ -16,7 +16,7 @@ module Gerry
       def get(url)        
         if @username && @password
           auth = { username: @username, password: @password }
-          response = self.class.get("/a#{url}", basic_auth: auth)   
+          response = self.class.get("/a#{url}", digest_auth: auth)   
           parse(response)              
         else
           response = self.class.get(url)
