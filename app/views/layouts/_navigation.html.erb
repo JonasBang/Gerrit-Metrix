@@ -9,7 +9,7 @@
     </li>
     <% if (current_user.has_role? :admin) or (current_user.name=='admin') %>
       <li>
-      <%= link_to 'Admin', users_path %>
+      <%= link_to 'Users', users_path %>
       </li>
       <li>
       <%= link_to 'Roles', roles_path %>
