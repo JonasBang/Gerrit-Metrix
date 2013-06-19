@@ -11,15 +11,13 @@ end
 
 def create_unconfirmed_user
   create_visitor
-  delete_user
   sign_up
   visit '/users/sign_out'
 end
 
 def create_user
   create_visitor
-  delete_user
-  @user = FactoryGirl.create(:user, email: @visitor[:email])
+  @user = FactoryGirl.create(:user, name: @visitor[:name], email: @visitor[:email])
 end
 
 def delete_user
@@ -28,7 +26,6 @@ def delete_user
 end
 
 def sign_up
-  delete_user
   visit '/users/sign_up'
   fill_in "Name", :with => @visitor[:name]
   fill_in "Email", :with => @visitor[:email]
@@ -175,6 +172,11 @@ Then(/^I should see a missing name message$/) do
   page.should have_content "Namecan't be blank"
 end
 
+Then(/^I should see non\-unique data messages$/) do
+  page.should have_content "Namehas already been taken"
+  page.should have_content "Emailhas already been taken"
+end
+
 Then /^I should see a missing password confirmation message$/ do
   page.should have_content "Passworddoesn't match confirmation"
 end
@@ -196,6 +198,5 @@ Then /^I should see an account edited message$/ do
 end
 
 Then /^I should see my name$/ do
-  create_user
   page.should have_content @user[:name]
 end
