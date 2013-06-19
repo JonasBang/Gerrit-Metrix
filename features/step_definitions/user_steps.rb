@@ -101,6 +101,12 @@ When /^I sign up without a password$/ do
   sign_up
 end
 
+When(/^I sign up without a name$/) do
+  create_visitor
+  @visitor = @visitor.merge(:name => "")
+  sign_up
+end
+
 When /^I sign up with a mismatched password confirmation$/ do
   create_visitor
   @visitor = @visitor.merge(:password_confirmation => "changeme123")
@@ -163,6 +169,10 @@ end
 
 Then /^I should see a missing password message$/ do
   page.should have_content "Passwordcan't be blank"
+end
+
+Then(/^I should see a missing name message$/) do
+  page.should have_content "Namecan't be blank"
 end
 
 Then /^I should see a missing password confirmation message$/ do

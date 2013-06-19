@@ -18,6 +18,10 @@ Feature: Sign up
       When I sign up without a password
       Then I should see a missing password message
 
+    Scenario: User signs up without name
+      When I sign up without a name
+      Then I should see a missing name message
+
     Scenario: User signs up without password confirmation
       When I sign up without a password confirmation
       Then I should see a missing password confirmation message
