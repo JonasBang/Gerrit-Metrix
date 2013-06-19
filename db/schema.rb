@@ -11,10 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130619143224) do
+ActiveRecord::Schema.define(:version => 20130619143655) do
 
   create_table "roles", :force => true do |t|
-    t.string   "name"
+    t.string   "name",          :null => false
     t.integer  "resource_id"
     t.string   "resource_type"
     t.datetime "created_at",    :null => false
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20130619143224) do
   end
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resources"
-  add_index "roles", ["name"], :name => "index_roles_on_name"
+  add_index "roles", ["name"], :name => "index_roles_on_name", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
