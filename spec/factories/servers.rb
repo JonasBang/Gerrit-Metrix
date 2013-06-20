@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :server do
-    name "MyString"
-    url "MyString"
-    username "MyString"
-    password "MyString"
+    name "Example Server"
+    url "http://example.server.com"
+    username "user"
+    password "pass"
   end
 end
