@@ -1,0 +1,10 @@
+<%= simple_form_for(@server, :html => {:class => 'form-vertical' }) do |f| %>
+  <%= f.error_notification %>
+  <%= display_base_errors @server %>
+  <%= f.input :name, :required => true, :autofocus => true %>
+  <%= f.input :url, :required => true %>
+  <%= f.input :username, :required => true %>
+  <%= f.input :password, :required => true %>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to "Cancel", :back, :class => 'btn' %>
+<% end %>
