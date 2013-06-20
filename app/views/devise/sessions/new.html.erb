@@ -4,5 +4,6 @@
   <%= f.input :password %>
   <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
   <%= f.button :submit, "Sign in", :class => 'btn-primary' %>
+  <%= link_to "Cancel", :back, :class => 'btn' %>
 <% end %>
 <%= render "devise/shared/links" %>

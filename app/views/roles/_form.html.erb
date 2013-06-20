@@ -3,4 +3,5 @@
   <%= display_base_errors @role %>
   <%= f.input :name, :required => true, :autofocus => true %>
   <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to "Cancel", :back, :class => 'btn' %>
 <% end %>

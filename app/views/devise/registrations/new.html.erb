@@ -7,5 +7,6 @@
   <%= f.input :password, :required => true %>
   <%= f.input :password_confirmation, :required => true %>
   <%= f.button :submit, 'Sign up', :class => 'btn-primary' %>
+  <%= link_to "Cancel", :back, :class => 'btn' %>
 <% end %>
 <%= render "devise/shared/links" %>
