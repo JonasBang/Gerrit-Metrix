@@ -34,7 +34,12 @@ class RolesController < ApplicationController
 
   def destroy
     @role = Role.find params[:id]
-    @role.destroy
-    redirect_to roles_path
+    if @role.users.empty?
+      @role.destroy
+      redirect_to roles_path
+    else
+      flash[:error] = "Cannot delete a role which is currently assigned to a user."
+      redirect_to roles_path
+    end
   end
 end
