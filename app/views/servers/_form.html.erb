@@ -4,7 +4,7 @@
   <%= f.input :name, :required => true, :autofocus => true %>
   <%= f.input :url, :required => true %>
   <%= f.input :username, :required => true %>
-  <%= f.input :password, :required => true %>
+  <%= f.input :password, :required => true, :label => 'HTTP password' %>
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to "Cancel", :back, :class => 'btn' %>
 <% end %>
