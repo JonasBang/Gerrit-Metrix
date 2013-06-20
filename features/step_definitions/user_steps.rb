@@ -27,7 +27,7 @@ end
 
 def sign_up
   visit '/users/sign_up'
-  fill_in "Name", :with => @visitor[:name]
+  fill_in "Username", :with => @visitor[:name]
   fill_in "Email", :with => @visitor[:email]
   fill_in "user_password", :with => @visitor[:password]
   fill_in "user_password_confirmation", :with => @visitor[:password_confirmation]
@@ -39,7 +39,7 @@ def sign_in
   visit '/users/sign_in'
   fill_in "Email", :with => @visitor[:email]
   fill_in "Password", :with => @visitor[:password]
-  click_button "Sign in"
+  click_button "Login"
 end
 
 ### GIVEN ###
@@ -125,14 +125,10 @@ When /^I sign in with a wrong password$/ do
 end
 
 When /^I edit my account details$/ do
-  click_link "Edit account"
-  fill_in "Name", :with => "newname"
+  click_link "Edit [#{@visitor[:name]}]"
+  fill_in "Username", :with => "newname"
   fill_in "user_current_password", :with => @visitor[:password]
   click_button "Update"
-end
-
-When /^I look at the list of users$/ do
-  visit '/'
 end
 
 ### THEN ###
@@ -169,11 +165,11 @@ Then /^I should see a missing password message$/ do
 end
 
 Then(/^I should see a missing name message$/) do
-  page.should have_content "Namecan't be blank"
+  page.should have_content "Usernamecan't be blank"
 end
 
 Then(/^I should see non\-unique data messages$/) do
-  page.should have_content "Namehas already been taken"
+  page.should have_content "Usernamehas already been taken"
   page.should have_content "Emailhas already been taken"
 end
 
@@ -197,6 +193,3 @@ Then /^I should see an account edited message$/ do
   page.should have_content "You updated your account successfully."
 end
 
-Then /^I should see my name$/ do
-  page.should have_content @user[:name]
-end
