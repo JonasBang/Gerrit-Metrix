@@ -5,8 +5,6 @@
     <tr>
       <th>Name</th>
       <th>Url</th>
-      <th>Username</th>
-      <th>HTTP password</th>
     </tr>
   </thead>
   <tbody>
@@ -14,8 +12,6 @@
     <tr>
       <td><%= server.name %></td>
       <td><%= server.url %></td>
-      <td><%= server.username %></td>
-      <td><%= server.password %></td>
       <td>
         <%= link_to("Edit", edit_server_path(server), :class => 'btn btn-mini') %>
         <%= link_to("Delete", server_path(server), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') %>

@@ -1,10 +1,10 @@
 <%= link_to "Metrix", root_path, :class => 'brand' %>
 <ul class="nav">
   <% if user_signed_in? %>
-    <% if (current_user.has_role? :admin) or (current_user.name=='admin') %>
       <li>
       <%= link_to 'Servers', servers_path %>
       </li>
+    <% if (current_user.has_role? :admin) or (current_user.name=='admin') %>
       <li>
       <%= link_to 'Users', users_path %>
       </li>

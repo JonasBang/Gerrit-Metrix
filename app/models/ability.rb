@@ -3,6 +3,7 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user (not logged in)
+    can :read, Server
     if (user.has_role? :admin) or (user.name=='admin')
       can :manage, :all
     end
