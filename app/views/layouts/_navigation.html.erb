@@ -13,10 +13,10 @@
       </li>
     <% end %>
     <li>
-    <%= link_to 'Edit account', edit_user_registration_path %>
+    <%= link_to "Edit [#{current_user.name}]", edit_user_registration_path %>
     </li>
     <li>
-    <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
+    <%= link_to "Logout [#{current_user.name}]", destroy_user_session_path, :method=>'delete' %>
     </li>
   <% else %>
     <li>
