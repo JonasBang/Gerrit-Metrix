@@ -41,4 +41,20 @@ class ServersController < ApplicationController
       redirect_to servers_path, :flash => { :error => "Cannot delete a server which is referenced by a project." }      
     end
   end
+
+  def import
+    @server = Server.find params[:id]
+    gerrit = Gerry.new(@server.url, @server.username, @server.password)
+    projects_list = gerrit.projects
+
+    projects_list.values.each { |p|
+      if !Project.find_by_server_id_and_name(@server, p["id"])
+        if !Project.create(@server, p["id"])
+          # TODO: Handle failing save
+        end
+      end
+    }
+
+    redirect_to servers_path, :flash => { :notice => "Import successful." }
+  end
 end
