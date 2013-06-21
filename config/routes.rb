@@ -11,5 +11,4 @@ Metrix::Application.routes.draw do
   resources :servers do
     get 'import', :on => :member
   end
-  resources :projects
 end
