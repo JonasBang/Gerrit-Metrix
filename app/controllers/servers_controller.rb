@@ -48,8 +48,9 @@ class ServersController < ApplicationController
     projects_list = gerrit.projects
 
     projects_list.values.each { |p|
-      if !Project.find_by_server_id_and_name(@server, p["id"])
-        if !Project.create(@server, p["id"])
+      project_name = p["id"]
+      if !Project.find_by_server_id_and_name(@server, project_name)
+        if !Project.create(@server, project_name)
           # TODO: Handle failing save
         end
       end
