@@ -38,8 +38,7 @@ class RolesController < ApplicationController
       @role.destroy
       redirect_to roles_path
     else
-      flash[:error] = "Cannot delete a role which is currently assigned to a user."
-      redirect_to roles_path
+      redirect_to roles_path, :flash => { :error => "Cannot delete a role which is currently assigned to a user." }
     end
   end
 end
