@@ -34,7 +34,11 @@ class ServersController < ApplicationController
 
   def destroy
     @server = Server.find params[:id]
-    @server.destroy
-    redirect_to servers_path
+    if @server.projects.empty?
+      @server.destroy
+      redirect_to servers_path
+    else
+      redirect_to servers_path, :flash => { :error => "Cannot delete a server which is referenced by a project." }      
+    end
   end
 end
