@@ -19,7 +19,6 @@
       <% if current_user.has_role? :admin %>
       <td><%= server.username %></td>
       <td><%= server.password %></td>
-      <% end %>
       <td>
         <%= link_to("Import", import_server_path(server), :method => :get, :class => 'btn btn-mini') %>
         <%= link_to("Edit", edit_server_path(server), :class => 'btn btn-mini') %>
@@ -27,6 +26,7 @@
           <%= link_to("Delete", server_path(server), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') %>
         <% end %>
       </td>
+      <% end %>
     </tr>
   <% end %>
   </tbody>
