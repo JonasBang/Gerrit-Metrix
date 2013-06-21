@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  has_one :server
+  belongs_to :server
   
   attr_accessible :name, :server
   
