@@ -25,7 +25,7 @@ class ServersController < ApplicationController
 
   def update
     @server = Server.find params[:id]
-    if @server.update_attributes params[:role]
+    if @server.update_attributes params[:server]
       redirect_to servers_path
     else
       render :action => :edit
