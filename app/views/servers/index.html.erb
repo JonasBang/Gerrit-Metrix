@@ -5,6 +5,10 @@
     <tr>
       <th>Name</th>
       <th>Url</th>
+      <% if current_user.has_role? :admin %>
+      <th>Username</th>
+      <th>HTTP password</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -12,6 +16,10 @@
     <tr>
       <td><%= server.name %></td>
       <td><%= server.url %></td>
+      <% if current_user.has_role? :admin %>
+      <td><%= server.username %></td>
+      <td><%= server.password %></td>
+      <% end %>
       <td>
         <%= link_to("Edit", edit_server_path(server), :class => 'btn btn-mini') %>
         <%= link_to("Delete", server_path(server), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') %>
